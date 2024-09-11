@@ -1,19 +1,25 @@
-weight = int(input(f"Please enter the weight of your bag (kg): "))
-length = int(input(f"Please enter the dimensions of your bag length)"))
-width = int(input(f"Please enter the dimensions of your bag width )"))
-height = int(input(f"Please enter the dimensions of your bag height: )"))
+import random
 
-def dimensions(length, width, height):
-    if ((length < 55 and width < 40 and height < 23)):
-        return True
+def number_guessing_game():
+    number = random.randint(1, 10)
+
+    player_name = input("Hello, What's your name? ")
+    number_of_guesses = 0
+
+    print("Okay, " + player_name + "! I am guessing a number between 1 and 10:")
+
+    while number_of_guesses < 5:
+        guess = int(input())
+        number_of_guesses += 1
+
+        if guess < number:
+            print('Your guess is too low.')
+        elif guess > number:
+            print('Your guess is too high.')
+        else:
+            break
+
+    if guess == number:
+        print('Congratulations, ' + player_name + '! You guessed the number in ' + str(number_of_guesses) + ' tries!')
     else:
-        return False
-def bag_weight(weight):
-    if weight <= 8:
-        return True
-    else:
-        return False
-if bag_weight and dimensions(bag_weight, dimensions):
-    print(f"Your bag is okay, have a nice trip!")
-else:
-    print(f"Your bag is not up to code, please check paramaters")
+        print('Sorry, ' + player_name + ', you did not guess the number. The number was ' + str(number))
