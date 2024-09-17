@@ -1,0 +1,25 @@
+# Lektion 17 september 
+
+#Big ideas in programming
+
+: "logical thinking" 
+: Formal language and syntax
+: Variables and constants
+: Parameters
+: Flow control
+: Function, process, method ( self , text) 
+: Algorithm - en algorithm är samma sak som ett program 
+: Data structures 
+: Composition / Decomposition
+: Reusability (DRY- Dont Repeat Your selft. Om man upplever att man behöver kopiera kod flera agånger, 
+  gör om den till en funktion istället) - Klippa och klistra kod 
+: 
+
+Polynom, kvadrat - Andragrads ekvationer
+
+q_term = [1,2,1] --> x**2 + 2x + 1 = 0
+
+
+
+
+
