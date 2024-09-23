@@ -1,34 +1,39 @@
-import random as rng
-user_score = 0
+import numpy as np
+import matplotlib.pyplot as plt
 
-print(f"Please choose a difficulty level.")
-print(f"1 - Easy")
-print(f"2 - Medium")
-print(f"3 - Hard")
+# Initialize random number generator
+rng = np.random.default_rng()
 
-difficulty = int(input(f"Choose a difficulty setting for this excercise (1-3): "))
+def count_six_and_print(dice_rolls):
+    num_six = []  # Store the six counts, as in your original code
+    
+    # Simulate dice rolls
+    for _ in range(dice_rolls):
+        dice = rng.integers(1, 7)  # Get random integers between 1 and 6
+        if dice == 6:
+            num_six.append(dice)
+    
+    # Print the number of sixes
+    print(f"Number of sixes for {dice_rolls} rolls: {len(num_six)}")
+    print(f"The probability of getting a sex in {dice_rolls} is: {len(num_six) / dice_rolls}")
+    print()
+    print()
+    # Return the probability
+    return len(num_six) / dice_rolls
 
+# List of dice rolls for each test
+rolls_list = [10, 100, 1000, 10000, 100000, 1000000]
 
-while True:
+# Store the calculated probabilities
+probabilities = [count_six_and_print(rolls) for rolls in rolls_list]
 
-    if difficulty == "1":
-        x = rng.randint(2, 2)
-        y = rng.randint(2, 2)
-    if difficulty == "2":
-        x = rng.randint(3, 5)
-        y = rng.randint(3, 5)
-    if difficulty == "3":
-        x = rng.randint(1, 10)
-        y = rng.randint(1, 10)
-
-    user_input = int(input(f"What is {x} x {y}?. "))
-    if user_input == x*y:
-        print(f"Good work")
-        user_score += 1    
-    else:
-        print(f"{x*y} is the correct answer")
-    print(f"Your score is now {user_score}")    
-    play_again = input(f"Do you want to play again? (y / n): ")
-    if play_again != "y":
-        print(f"Thank you for playing, have a nice day!")
-        break
+# Plotting the probabilities
+plt.plot(rolls_list, probabilities, marker='o', linestyle='-', color='b', label='Probability of rolling a 6')
+plt.axhline(y=1/6,)
+plt.xscale('log')  # Use logarithmic scale for x-axis
+plt.xlabel('Number of Dice Rolls')
+plt.ylabel('Probability')
+plt.title('Probability of Rolling a Six vs Number of Dice Rolls')
+plt.legend()
+plt.grid(True)
+plt.show()
