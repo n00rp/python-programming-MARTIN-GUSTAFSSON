@@ -62,9 +62,3 @@ plt.scatter(pichu_x, pichu_y, color= "orange", marker = "o")
 plt.scatter(pikachu_x, pikachu_y, color= "blue", marker = "o")
 plt.show()
 
-
-
-
-
-            
-                             
