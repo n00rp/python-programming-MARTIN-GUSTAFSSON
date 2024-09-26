@@ -20,7 +20,7 @@ with open(path, "r") as f_read, open("Data/datapoints_clean.txt", "w") as f_writ
 
 pichu = []
 pikachu = []
-
+classes = []
 with open("Data/datapoints_clean.txt", "r") as list:
     for line in list:
         line_strip = line.strip()
@@ -32,19 +32,19 @@ with open("Data/datapoints_clean.txt", "r") as list:
                 value1 = round(float(data_split[0].strip()), 2)
                 value2 = round(float(data_split[1].strip()), 2)
                 classification = int(data_split[2].strip())
-                
+             
 
                 if classification == 0:
-                    pichu.append([value1, value2, classification])
+                    pichu.append([value1, value2])
+                    classes.append([classification])
                 elif classification == 1:
-                    pikachu.append([value1, value2, classification])
+                    pikachu.append([value1, value2])
+                    classes.append([classification])
 
             except ValueError:
                 print(f"Removed lines that were not able to be made into float or int")
-                
+            
 
-
-    
 
 import matplotlib.pyplot as plt
 
@@ -62,12 +62,9 @@ plt.scatter(pichu_x, pichu_y, color= "orange", marker = "o")
 plt.scatter(pikachu_x, pikachu_y, color= "blue", marker = "o")
 plt.show()
 
-path_new = "Data/testpoints.txt"
 
-with open(path_new, "r") as f:
-    test_points = f.read()
 
-def euclidean_distance(point1, point2):
-    return math.sqrt((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2)
+
+
             
                              
