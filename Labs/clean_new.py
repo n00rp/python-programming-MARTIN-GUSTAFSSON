@@ -18,8 +18,8 @@ def clean_and_parse_data(input_file):
 points = clean_and_parse_data(path)
 
 # Step 2: Euclidean distance function
-def euclidean_distance(p, q):
-    return np.linalg.norm(np.array(p) - np.array(q))
+def euclidean_distance(x, y):
+    return np.linalg.norm(np.array(x) - np.array(y))
 
 # Step 3: k-NN function to classify and plot
 def classify_and_plot(test_points, k=1):
