@@ -19,7 +19,7 @@ points = clean_and_parse_data(path)
 
 # Step 2: Euclidean distance function
 def euclidean_distance(x, y):
-    return np.linalg.norm(np.array(x) - np.array(y))
+    return np.linalg.norm(np.array(x) - np.array(y), ord=2)
 
 # Step 3: k-NN function to classify and plot
 def classify_and_plot(test_points, k=1):
@@ -28,9 +28,9 @@ def classify_and_plot(test_points, k=1):
     plt.ylabel("Feature 2")
 
     for new_point in test_points:
-        distances = [(euclidean_distance(p, new_point), pokemon) for pokemon, p_list in points.items() for p in p_list]
-        new_class = max(set([cls for _, cls in sorted(distances)[:k]]), key=[cls for _, cls in sorted(distances)[:k]].count)
-
+        distances = [(euclidean_distance(x, new_point), pokemon) for pokemon, p_list in points.items() for x in p_list]
+        new_class = max(set([y for _, y in sorted(distances)[:k]]), key=[y for _, y in sorted(distances)[:k]].count)
+        
         for pokemon, p_list in points.items():
             color = '#FFCC00' if pokemon == 'Pikachu' else '#00CCCC'
             plt.scatter(*zip(*p_list), color=color, label=pokemon)
