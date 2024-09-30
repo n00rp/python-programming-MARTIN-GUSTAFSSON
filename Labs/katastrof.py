@@ -55,20 +55,29 @@ def plot_data(pichu, pikachu): #Fuction to plot the data
     plt.show()
 
 #plot_data(*separate_data(clean_data(open_file(file_name))))
+print(type(new_points()))
 
-
+def simplified_knn(pichu, pikachu, new_points, user_input):
+    classification = []
+    for point in new_points + [tuple(user_input)]:
+        print(type(point))
+        minimum_distance = float('inf')
+        closest_point = None
+        for data_point in pichu + pikachu:
+            print(type(data_point))
+            distance = math.sqrt((point[0] - data_point[0])**2 + (point[1] - data_point[1])**2)
+            if distance < minimum_distance:
+                minimum_distance = distance
+                closest_point = data_point
+        classify = 0 if closest_point in pichu else 1
+        classification.append(classify)
+    return classification
 #print(simplified_knn(*separate_data(clean_data(open_file(file_name))), new_points()))
 
-def simplified_knn(pichu, pikachu, user_input):
-    classification = []
-    for point in user_input:
-        closest_point = min(pichu + pikachu, key=lambda x: math.sqrt((point[0] - float(x[0]))**2 + (point[1] - float(x[1]))**2))
-        classification.append(0 if closest_point in pichu else 1)
-    return classification
 
-def plot_and_classify(pichu, pikachu, user_input):
+def plot_and_classify(new_data, pichu, pikachu, user_input):
     # Klassificera ny data
-    new_data_classification = simplified_knn(pichu, pikachu, [user_input])[0]
+    new_data_classification = simplified_knn(pichu, pikachu, new_data, [user_input])[0]
 
     # Plotta befintlig data och ny data
     plt.scatter([point[0] for point in pichu], [point[1] for point in pichu], color ='magenta', label='Pichu', marker='o', s=50)
@@ -77,7 +86,6 @@ def plot_and_classify(pichu, pikachu, user_input):
         plt.scatter(user_input[0], user_input[1], color ='blueviolet', s= 100, label='New Pichu', marker='*')
     else:
         plt.scatter(user_input[0], user_input[1], color ='deepskyblue', s= 100, label='New Pikachu', marker='*')
-
     plt.legend()
     plt.show()
 #plot_data(*separate_data(clean_data(open_file(file_name))))
@@ -93,7 +101,9 @@ def get_user_input():
 user_input_point = get_user_input()
 user_input = user_input_point
 
-print(user_input)
 
-plot_and_classify(*separate_data(clean_data(open_file(file_name))), user_input)
+
+print(type(user_input))
+
+plot_and_classify(new_points(), *separate_data(clean_data(open_file(file_name))), user_input)
 
