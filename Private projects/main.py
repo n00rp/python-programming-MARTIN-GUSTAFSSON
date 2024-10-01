@@ -37,6 +37,7 @@ while running:
         display_surface.blit(star_surface, pos)
     if player_rect.right < window_width:
         player_rect.left += 0.2
+    
     display_surface.blit(player_surface, player_rect)
     pygame.display.update()
 #draw game           

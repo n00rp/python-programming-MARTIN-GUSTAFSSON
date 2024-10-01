@@ -26,12 +26,13 @@ def simplified_knn(pichu, pikachu, user_input, k=3):
     for point in user_input:
         closest_point = min(pichu + pikachu, key=lambda x: math.sqrt((point[0] - float(x[0]))**2 + (point[1] - float(x[1]))**2))[:k]
         classification.append(0 if closest_point in pichu else 1)
+        
     return classification
 
 #Plottar befintlig data och ny data efter att den klassificerats mellan pichu och pikachu
 def plot_and_classify(pichu, pikachu, user_input, k=3):
     new_data_classification = simplified_knn(pichu, pikachu, [user_input])[0]
-    print(f"The K-value of the new point is: {k}")
+   
     plt.scatter([point[0] for point in pichu], [point[1] for point in pichu], color ='magenta', label='Pichu', marker='o', s=50)
     plt.scatter([point[0] for point in pikachu], [point[1] for point in pikachu], color ='aqua', label='Pikachu', marker='o', s=50)
     if new_data_classification == 0:
@@ -57,3 +58,6 @@ with open(file_name, "r") as file:
 pichu, pikachu = separate_data(clean_data(data)) 
 user_input_point = get_user_input()
 plot_and_classify(pichu, pikachu, user_input_point, k=11) 
+
+
+
