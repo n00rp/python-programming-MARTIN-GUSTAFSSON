@@ -1,5 +1,8 @@
 import math
 import matplotlib.pyplot as plt
+file_name = "python-programming-MARTIN-GUSTAFSSON/Data/datapoints.txt"
+test_file = "python-programming-MARTIN-GUSTAFSSON/Data/testpoints.txt"
+
 #Rensa data för att kunna använda senare
 def clean_data(data):
     cleaned_data = []
@@ -50,7 +53,8 @@ def get_user_input():
         except ValueError:
             print("Invalid input. Please enter a real number.")
 
-file_name = "Data/datapoints.txt"
+
+
 with open(file_name, "r") as file:
     next(file)
     data = file.readlines()
@@ -59,5 +63,21 @@ pichu, pikachu = separate_data(clean_data(data))
 user_input_point = get_user_input()
 plot_and_classify(pichu, pikachu, user_input_point, k=11) 
 
+#Klassificera testdata och printa ut dess klassificering: 
+
+test_points = []
+with open(test_file, 'r') as f:
+    next(f)  
+    for line in f:
+        cordinate = line.split('(')[1].split(')')[0].split(', ')
+        x = float(cordinate[0])
+        y = float(cordinate[1])
+        test_points.append((x, y))
+classification = simplified_knn(pichu, pikachu, test_points)
+seen_points = set()
+for i, point in enumerate(test_points):
+    if point not in seen_points:
+        print(f"Testpunkt ({point[0]}, {point[1]}) klassificerad som: {'Pichu' if classification[i] == 0 else 'Pikachu'}")
+        seen_points.add(point)
 
 
