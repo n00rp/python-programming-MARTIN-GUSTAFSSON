@@ -2,6 +2,12 @@ import math
 import matplotlib.pyplot as plt
 file_name = "python-programming-MARTIN-GUSTAFSSON/Data/datapoints.txt"
 test_file = "python-programming-MARTIN-GUSTAFSSON/Data/testpoints.txt"
+ 
+
+#Läser in filen datapoints.txt
+with open(file_name, "r") as file:
+    next(file)
+    data = file.readlines()
 
 #Rensa data för att kunna använda senare
 def clean_data(data):
@@ -23,7 +29,8 @@ def separate_data(data):
             pikachu.append((float(x), float(y)))
     return pichu, pikachu
 
-#Räknar ut minsta avståndet mellan punkterna för att kunna klassificera punkterna
+#Räknar ut minsta avståndet mellan punkterna för att kunna klassificera punkterna, inspiration kommer från
+#Stack Overflow, GeeksforGeeks, W3Schools, Real Python. Har dock felsökt med hjälp av AI för att få ekvationen att fungera.
 def simplified_knn(pichu, pikachu, user_input, k=3):
     classification = []
     for point in user_input:
@@ -32,7 +39,10 @@ def simplified_knn(pichu, pikachu, user_input, k=3):
         
     return classification
 
-#Plottar befintlig data och ny data efter att den klassificerats mellan pichu och pikachu
+
+
+#Plottar befintlig data och ny data efter att den klassificerats mellan pichu och pikachu, felsökning med hjälp av AI för att 
+#få looparna att fungera korrekt.
 def plot_and_classify(pichu, pikachu, user_input, k=3):
     new_data_classification = simplified_knn(pichu, pikachu, [user_input])[0]
    
@@ -55,29 +65,23 @@ def get_user_input():
 
 
 
-with open(file_name, "r") as file:
-    next(file)
-    data = file.readlines()
+
 
 pichu, pikachu = separate_data(clean_data(data)) 
 user_input_point = get_user_input()
 plot_and_classify(pichu, pikachu, user_input_point, k=11) 
 
 #Klassificera testdata och printa ut dess klassificering: 
-
-test_points = []
 with open(test_file, 'r') as f:
-    next(f)  
+    next(f)
+    test_points = []
     for line in f:
-        cordinate = line.split('(')[1].split(')')[0].split(', ')
-        x = float(cordinate[0])
-        y = float(cordinate[1])
+        x, y = map(float, line.split('(')[1].split(')')[0].split(', '))
         test_points.append((x, y))
+
 classification = simplified_knn(pichu, pikachu, test_points)
-seen_points = set()
-for i, point in enumerate(test_points):
-    if point not in seen_points:
-        print(f"Testpunkt ({point[0]}, {point[1]}) klassificerad som: {'Pichu' if classification[i] == 0 else 'Pikachu'}")
-        seen_points.add(point)
+
+for point, label in zip(test_points, classification):
+    print(f"Testpoints: ({point[0]}, {point[1]}) classified as: {'Pichu' if label == 0 else 'Pikachu'}")
 
 
