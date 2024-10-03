@@ -34,7 +34,7 @@ def separate_data(data):
 def simplified_knn(pichu, pikachu, user_input, k=3):
     classification = []
     for point in user_input:
-        closest_point = min(pichu + pikachu, key=lambda x: math.sqrt((point[0] - float(x[0]))**2 + (point[1] - float(x[1]))**2))[:k]
+        closest_point = min(pichu + pikachu, key=lambda x: math.sqrt((point[0] - float(x[0]))**2 + (point[1] - float(x[1]))**2))[:k] #Har tagit hjälp av AI för implementering och felsökning 
         classification.append(0 if closest_point in pichu else 1)
         
     return classification
@@ -54,7 +54,7 @@ def plot_and_classify(pichu, pikachu, user_input, k=3):
     plt.legend()
     plt.show()
 
-#Får användaren att mata in X och Y värden
+#Ber användaren att mata in X och Y värden
 def get_user_input():
     while True:
         try:

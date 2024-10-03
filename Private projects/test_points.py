@@ -1,26 +1,92 @@
-import numpy as np
-from collections import Counter
+import random
+from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from matplotlib.colors import ListedColormap
-from new_knn import KNN
 
-cmap = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
+accuracies = []
+true_positives = []
+false_negatives = []
+false_positives = []
+true_negatives = []
 
+for _ in range(10):
+    with open("python-programming-MARTIN-GUSTAFSSON/Data/datapoints.txt", 'r') as f:
+        next(f)
+        data = []
+        for line in f:
+            x, y, label = line.strip().split(',')
+            data.append((x, y, label))
 
-iris = datasets.load_iris()
+    def separate_data(data):
+        pichu = []
+        pikachu = []
 
-X, y = iris.data, iris.target
+        for row in data:
+            x, y, label = row
+            if label == " 0":
+                pichu.append((float(x), float(y)))
+            elif label == " 1":
+                pikachu.append((float(x), float(y)))
+        return pichu, pikachu
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
+    pichu, pikachu = separate_data(data)
 
-plt.figure()
-plt.scatter(X[:, 2], X[:, 3], c=y, cmap=cmap, edgecolor='k', s=20)
+    random.shuffle(pichu)
+    random.shuffle(pikachu)
+
+    training_pichu = pichu[:50]
+    training_pikachu = pikachu[:50]
+    test_pichu = pichu[50:]
+    test_pikachu = pikachu[50:]
+
+    test_data = test_pichu + test_pikachu
+    test_labels = [0] * len(test_pichu) + [1] * len(test_pikachu)
+
+    train_data = []
+    for point in training_pichu + training_pikachu:
+        train_data.append([point[0], point[1]])
+    labels = []
+    for i in range(len(training_pichu)):
+        labels.append(0)
+    for i in range(len(training_pikachu)):
+        labels.append(1)
+
+    knn = KNeighborsClassifier(n_neighbors=10) #Använt Sckit-learn dokumentation samt AI stöd för implementation
+    knn.fit(train_data, labels)
+
+    predictions = knn.predict(test_data)
+
+    TP = 0
+    FP = 0
+    TN = 0
+    FN = 0
+
+    for i in range(len(test_labels)): #Tog hjälp från en GitHub för inspiration: https://github.com/ML4ITS/mtad-gat-pytorch/blob/main/eval_methods.py
+        if test_labels[i] == 1 and predictions[i] == 1:
+            TP += 1
+        elif test_labels[i] == 0 and predictions[i] == 1:
+            FP += 1
+        elif test_labels[i] == 0 and predictions[i] == 0:
+            TN += 1
+        elif test_labels[i] == 1 and predictions[i] == 0:
+            FN += 1
+
+   
+
+    accuracy = (TP + TN) / (TP + TN + FP + FN)
+    accuracies.append(accuracy)
+    true_positives.append(TP)
+    false_negatives.append(FN)
+    false_positives.append(FP)
+    true_negatives.append(TN)
+mean_accuracy = sum(accuracies) / len(accuracies)
+print(accuracies)
+plt.plot(range(len(accuracies)), accuracies)
+plt.xlabel('Iteration')
+plt.ylabel('Noggrannhet')
+plt.title('Noggrannhet över iterationer')
+plt.xlabel("Iteration")
+plt.ylabel("Value")
+plt.title("Accuracy for TP, FN, FP, TN över 10 iteration")
+plt.legend()
 plt.show()
-
-clf = KNN(k=5)
-clf.fit(X_train, y_train)
-predictions = clf.predict(X_test)
-
-print(predictions)
+print(f"Mean accuracy: {mean_accuracy*100}%")
