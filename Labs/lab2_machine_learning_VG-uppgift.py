@@ -8,6 +8,7 @@ false_negatives = []
 false_positives = []
 true_negatives = []
 
+#Skapar en loop som kör 10 ggr
 for _ in range(10):
     with open("python-programming-MARTIN-GUSTAFSSON/Data/datapoints.txt", 'r') as f:
         next(f)
@@ -61,7 +62,7 @@ for _ in range(10):
     FN = 0
 
     for i in range(len(test_labels)): #Tog hjälp från en GitHub för inspiration: https://github.com/ML4ITS/mtad-gat-pytorch/blob/main/eval_methods.py
-        if test_labels[i] == 1 and predictions[i] == 1:
+        if test_labels[i] == 1 and predictions[i] == 1: #Tog även hjälp från Stackoverflow
             TP += 1
         elif test_labels[i] == 0 and predictions[i] == 1:
             FP += 1
@@ -81,12 +82,12 @@ for _ in range(10):
 mean_accuracy = sum(accuracies) / len(accuracies)
 print(accuracies)
 plt.plot(range(len(accuracies)), accuracies)
-plt.xlabel('Iteration')
-plt.ylabel('Noggrannhet')
-plt.title('Noggrannhet över iterationer')
+plt.xlabel("Iteration")
+plt.ylabel("Accuracy")
+plt.title("Accuracy over iterations")
 plt.xlabel("Iteration")
 plt.ylabel("Value")
-plt.title("Accuracy for TP, FN, FP, TN över 10 iteration")
+plt.title("Accuracy for TP, FN, FP, TN over 10 iterations")
 plt.legend()
 plt.show()
 print(f"Mean accuracy: {mean_accuracy*100}%")
