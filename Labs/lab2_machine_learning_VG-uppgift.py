@@ -62,7 +62,7 @@ for _ in range(10):
     FN = 0
 
     for i in range(len(test_labels)): #Tog hjälp från en GitHub för inspiration: https://github.com/ML4ITS/mtad-gat-pytorch/blob/main/eval_methods.py
-        if test_labels[i] == 1 and predictions[i] == 1: #Tog även hjälp från Stackoverflow
+        if test_labels[i] == 1 and predictions[i] == 1: #Tog även hjälp från Stackoverflow, W3Schools samt Youtube.
             TP += 1
         elif test_labels[i] == 0 and predictions[i] == 1:
             FP += 1

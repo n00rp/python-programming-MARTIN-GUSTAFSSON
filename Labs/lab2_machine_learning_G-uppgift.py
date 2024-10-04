@@ -1,5 +1,7 @@
 import math
 import matplotlib.pyplot as plt
+
+#Inläsning av filerna
 file_name = "python-programming-MARTIN-GUSTAFSSON/Data/datapoints.txt"
 test_file = "python-programming-MARTIN-GUSTAFSSON/Data/testpoints.txt"
  
@@ -18,7 +20,7 @@ def clean_data(data):
         cleaned_data.append(cleaned_line)
     return cleaned_data
 
-#Plockar pikachu och pichu och skapar listor med X och Y värden
+#Plockar Pikachu och Pichu och skapar listor med X och Y värden
 def separate_data(data):
     pichu = []
     pikachu = []
@@ -31,6 +33,7 @@ def separate_data(data):
     return pichu, pikachu
 
 #Räknar ut minsta avståndet mellan punkterna för att kunna klassificera punkterna
+#Använt mig av StackOverflow, Geeksforgeeks, W3schools, RealPython. Jag har även använt mig av AI (GPT) för hjälp med implementeringen.
 def simplified_knn(pichu, pikachu, user_input, k=3):
     classification = []
     for point in user_input:
@@ -42,6 +45,7 @@ def simplified_knn(pichu, pikachu, user_input, k=3):
 
 
 #Plottar befintlig data och ny data efter att den klassificerats mellan pichu och pikachu
+#Använt matplotlib dokumentation samt Youtube som inspiration för att få koden att fungera korrekt.
 def plot_and_classify(pichu, pikachu, user_input, k=3):
     new_data_classification = simplified_knn(pichu, pikachu, [user_input])[0]
    
