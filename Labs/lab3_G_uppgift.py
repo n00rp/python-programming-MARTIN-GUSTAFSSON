@@ -8,6 +8,7 @@ with open ("Data/unlabelled_data.csv") as file:
     lines = csv.reader(file)
     for row in lines:
         cordinates.append((float(row[0]), float(row[1])))
+
 x = [x[0] for x in cordinates]
 y = [y[1] for y in cordinates]
 
@@ -18,8 +19,8 @@ y_medium = sum(y)/len(y)
 standardavvikelse = sum((x - x_medium) * (y - y_medium) for x, y in zip(x, y)) /len(x)
 varians = sum((x - x_medium)**2 for x in x) / len(x)
 k = standardavvikelse/varians 
-m = 0  #y = kx + m
 
+m = 0  #y = kx + m
 
 plt.scatter(x, y, s=12, color = "blue")
 line = [k * xi + m for xi in x]
