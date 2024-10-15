@@ -31,7 +31,6 @@ plt.xlabel("X")
 plt.ylabel("Y")
 plt.title("Seperated points")
 plt.plot(x, line, color = "green")
-plt.lab
 plt.show()
 
 
