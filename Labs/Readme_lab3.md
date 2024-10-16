@@ -1,6 +1,6 @@
  
 
- ## Intro
+ # Intro
 
 The following program reads in coordinates to calculate if they are above or below the line.
 
@@ -10,7 +10,8 @@ To use the program, you can either load your own file (in this case, a CSV file)
 
 The program will classify the point graphically using a scatter plot in either red or blue depending on whether the point is above or below the line. All points entered will be classified by the program and be written to a separate CSV file, where each point will receive a classification of 0 if it is above the line and 1 if it is below the line.
 
-# 2: Explanation of the Program's Parts
+## 2: Explanation of the Program's Parts
+
 #### 1: The first part of the program reads in all points, originally through a CSV file, and separates them into X and Y coordinates.
 
 #### 2: The program then uses these in a function (def line_position) to calculate whether each point is above or below the line.
