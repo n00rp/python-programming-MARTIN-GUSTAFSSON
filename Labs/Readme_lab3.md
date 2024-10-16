@@ -4,7 +4,7 @@
 
 The following program reads in coordinates to calculate if they are above or below the line.
 
-The program is based on a straight line equation (Y = KX + M) that goes through the origo.
+The program is based on linear algebra (Y = KX + M) that goes through the origo.
 
 To use the program, you can either load your own file (in this case, a CSV file) with minimal code changes. Alternatively, you can add an input function where you can manually enter points to classify them yourself.
 
