@@ -1,0 +1,152 @@
+Facit tentamen:
+
+
+Fråga 1:
+
+Koden print(x + y) adderar värdet av variabler x och y och skriver ut summan. 
+I det här fallet är x lika med 5 och y lika med 10, så summan blir 15. 
+Därför är resultatet av koden a) 15
+
+
+Fråga 2:
+
+Svaret är: a) == kontrollerar om värdena är lika, medan is kontrollerar om objekten är identiska
+I Python är == ett operator som kontrollerar om värdena av två objekt är lika, 
+medan is är ett operator som kontrollerar om två objekt är identiska, d.v.s. om de är samma objekt i minnet
+
+
+Fråga 3:
+Svaret är: a) Med funktionen reverse()
+
+Du kan skapa en ny lista som innehåller alla element från en annan lista, 
+men i omvänd ordning, genom att använda funktionen reverse().
+
+
+Fråga 4:
+
+Svaret är: a) [1, 4, 9, 16, 25]
+
+Koden använder en teknik som kallas list comprehension för att skapa en ny lista squared_numbers som innehåller 
+kvadraten av varje tal i listan numbers.
+
+Här är hur det fungerar:
+
+x**2 beräknar kvadraten av varje tal x i listan numbers.
+for x in numbers loopar igenom varje tal i listan numbers.
+Så, om numbers är [1, 2, 3, 4, 5], kommer squared_numbers att bli [1**2, 2**2, 3**2, 4**2, 5**2], 
+vilket är [1, 4, 9, 16, 25].
+
+
+Fråga 5:
+
+Svaret är: a) Med funktionen sort() och b) Med funktionen sorted()
+
+I Python finns det två vanliga sätt att sortera en lista:
+
+Funktionen sort(): Den här funktionen sorterar listan på plats, d.v.s. den ändrar den ursprungliga listan.
+Funktionen sorted(): Den här funktionen returnerar en ny sorterad lista, utan att ändra den ursprungliga listan.
+
+
+Fråga 6:
+
+Svaret är: a) 5
+
+I den här koden tilldelas värdet av x till y, så att y också blir 5.
+Sedan ökas värdet av x med 1, så att x blir 6.
+Men detta påverkar inte värdet av y, eftersom y är en separat variabel som har sitt eget värde.
+Så när print(y) körs, skrivs värdet av y ut, som fortfarande är 5.
+
+
+Fråga 7:
+
+Svaret är: b) Att beräkna arean av en rektangel
+
+Koden definierar en funktion calculate_area som tar två argument: width (bredd) och height (höjd). 
+Funktionen returnerar produkten av dessa två värden, vilket är arean av en rektangel.
+
+
+Fråga 8:
+
+Svaret är: d) Funktionen print_user_input() anropas inte med rätt argument
+
+Koden definierar två funktioner: get_user_input och print_user_input. 
+Funktionen get_user_input frågar användaren om ett namn och returnerar det som en sträng. 
+Funktionen print_user_input tar emot ett namn som argument och skriver ut en hälsning med namnet.
+
+Problemet är att funktionen get_user_input anropas utan att dess returvärde tilldelas någon variabel. 
+Sedan anropas funktionen print_user_input utan något argument, trots att den förväntar sig ett namn som argument.
+
+
+
+Fråga 9:
+
+Svaret är: a) [5, 4, 3, 2, 1]
+
+Koden sorterar listan numbers i omvänd ordning med hjälp av metoden sort(reverse=True). 
+Detta innebär att listan kommer att sorteras från största till minsta.
+
+Listan numbers innehåller följande element: [1, 2, 3, 4, 5].
+När listan sorteras i omvänd ordning kommer den att se ut så här: [5, 4, 3, 2, 1].
+Så, när print(numbers) körs kommer listan [5, 4, 3, 2, 1] att skrivas ut.
+
+
+Fråga 10:
+
+Svaret är: d) Funktionen print_user_input() anropas inte med rätt argument
+
+Koden definierar två funktioner: get_user_input och print_user_input. 
+Funktionen get_user_input frågar användaren om ett namn och returnerar det som en sträng. 
+Funktionen print_user_input tar emot ett namn som argument och skriver ut en hälsning med namnet.
+
+Problemet är att funktionen get_user_input anropas och returnerar ett värde, 
+men detta värde tilldelas inte någon variabel. Sedan anropas funktionen print_user_input utan något argument, 
+trots att den förväntar sig ett namn som argument.
+
+För att koden ska fungera korrekt bör funktionen get_user_input anropas och dess returvärde tilldelas en variabel, 
+som sedan kan skickas som argument till funktionen print_user_input.
+
+
+
+Fråga 11: 
+
+Svaret är: a) [1, 2, 10, 3, 4, 5]
+
+Koden använder metoden insert för att infoga ett nytt element i listan numbers. 
+Metoden insert tar två argument: index och värde. I det här fallet infogas värdet 10 vid index 2.
+Listan numbers innehåller följande element: [1, 2, 3, 4, 5].
+När värdet 10 infogas vid index 2 kommer listan att se ut så här: [1, 2, 10, 3, 4, 5].
+Så, när print(numbers) körs kommer listan [1, 2, 10, 3, 4, 5] att skrivas ut.
+Notera att indexen i en lista börjar från 0, så index 2 motsvarar det tredje elementet i listan.
+
+
+Fråga 12:
+
+
+Vad är syftet med metoden lägg_till_bil i klassen BilLista?
+
+Svaret är: c) Att lägga till en ny bil i listan
+
+Metoden lägg_till_bil skapar en ny instans av klassen Bil med de angivna parametrarna (märke, modell och år) och lägger sedan till denna bil i listan bilar i klassen BilLista.
+
+
+
+Vad är syftet med metoden ta_bort_bil i klassen BilLista?
+
+Svaret är: c) Att ta bort en bil från listan
+
+Metoden ta_bort_bil tar bort en bil från listan bilar i klassen BilLista baserat på det angivna indexet.
+
+
+
+Vad är syftet med metoden visa_bilar i klassen BilLista?
+
+Svaret är: c) Att visa information om alla bilar i listan
+
+Metoden visa_bilar skriver ut information om alla bilar i listan bilar i klassen BilLista, inklusive index, märke, modell och år.
+
+
+Hur fungerar programmet om man väljer alternativ 1 i menyn?
+
+Svaret är: c) Programmet lägger till en ny bil i listan
+
+Om man väljer alternativ 1 i menyn, kommer programmet att fråga efter märke, modell och år för den nya bilen, och sedan lägga till denna bil i listan bilar i klassen BilLista med hjälp av metoden lägg_till_bil.
