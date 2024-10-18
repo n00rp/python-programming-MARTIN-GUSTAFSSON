@@ -1,6 +1,5 @@
 import csv
 import matplotlib.pyplot as plt
-import pandas as pd
 
 x = []
 y = []
@@ -12,6 +11,7 @@ with open ("Data/unlabelled_data.csv") as file:
         x.append((float(row[0])))
         y.append((float(row[1])))
 
+#Räkna ut linjen mellan punkterna för att kunna klassificera punkterna
 def line_position(x, y, k, m):
     above = []
     below = []
